@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { userRoutes, authRoutes } from './routes/AllRoutes'
+import Layout from './hocs/Layout'
+import NonAuthLayout from './hocs/NonAuthLayout'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    {
+                        userRoutes.map((route, i)=>(
+                            <Route 
+                                key={i} 
+                                path={route.path} 
+                                element={<Layout>{route.component}</Layout>}
+                            />
+                        ))
+                    }
+                    {
+                        authRoutes.map((route, i)=>(
+                            <Route 
+                                key={i} 
+                                path={route.path} 
+                                element={<NonAuthLayout>{route.component}</NonAuthLayout>}
+                            />
+                        ))
+                    }
+                </Routes>
+            </BrowserRouter>
+        </div>
+    )
 }
 
-export default App;
+export default App
