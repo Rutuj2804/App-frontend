@@ -1,0 +1,17 @@
+.navbar__Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    .navbar__Right {
+        svg{
+            font-size: 20px;
+            color: $primary;
+        }
+        .button {
+            margin-left: 10px;
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}

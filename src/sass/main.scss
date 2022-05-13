@@ -6,9 +6,11 @@
 
 // pages
 @import "./pages/authentication";
+@import "./pages/home";
 
 // components
 @import "./components/logo";
+@import "./components/navbar";
 
 * {
     margin: 0%;
