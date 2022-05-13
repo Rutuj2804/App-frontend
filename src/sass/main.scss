@@ -1,10 +1,19 @@
+// fonts
+@import "./fonts/fonts";
+
 // variables
 @import "./variables";
 
+// pages
+@import "./pages/authentication";
+
+// components
+@import "./components/logo";
 
 * {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    // font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }

@@ -1,0 +1,83 @@
+.auth__Wrapper{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .auth__Container{
+        min-width: 350px;
+        max-width: 450px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 20px 10px rgba(0,0,0,0.13);
+        .auth__Titles{
+            margin-bottom: 20px;
+            text-align: center;
+            .logo {
+                margin-bottom: 10px;
+            }
+        }
+        form{
+            width: 100%;
+            text-align: center;
+            .auth__InputDiv{
+                position: relative;
+                margin: 15px 0;
+                input{
+                    padding: 7px 15px;
+                    font-size: 16px;
+                    width: 100%;
+                    outline: none;
+                    border-radius: 5px;
+                    border: 1px solid $dark-gray;
+                    &:focus ~ label, &:valid ~ label {
+                        font-size: 12px;
+                        top: -7px;
+                        left: 4px;
+                        transition: all 0.2s linear;
+                        color: $primary;
+                    }
+                    &:focus, &:valid {
+                        border: 1px solid $primary;
+                    }
+                }
+                label{
+                    position: absolute;
+                    top: 8px;
+                    left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 0 4px;
+                    background-color: $white;
+                }
+            }
+            .auth__InternalLinks {
+                p{
+                    font-size: 14px;
+                    span {
+                        color: $primary;
+                        font-style: italic;
+                        cursor: pointer;
+                    }
+                }
+            }
+            button {
+                background-color: $primary;
+                color: $white;
+                padding: 5px 20px;
+                margin: 5px 0;
+            }
+        }
+        .auth__ExternalLinks {
+            margin-top: 10px;
+            a {
+                text-decoration: none;
+                font-style: italic;
+                color: $primary;
+            }
+        }
+    }
+}
