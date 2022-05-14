@@ -1,0 +1,51 @@
+.cart__Wrapper{
+    margin-top: 50px;
+    form {
+        padding: 10px;
+        box-shadow: 0 0 10px 5px #efefef;
+        width: 100%;
+        text-align: center;
+        .cart__Titles{
+            text-align: center;
+            margin: 10px 0;
+        }
+        textarea{
+            width: 100%;
+            border-radius: 5px;
+            padding: 7px;
+            height: 100px;
+            resize: none;
+            outline: none;
+        }
+        p{
+            font-weight: 600;
+            font-size: 18px;
+            margin: 0%;
+            strike {
+                color: $red;
+            }
+            span{
+                color: $green;
+                font-size: 20px;
+            }
+        }
+        .freedelivery {
+            svg {
+                margin-right: 7px;
+            }
+            span{
+                font-style: italic;
+                color: $dark-gray;
+                font-size: 14px;
+            }
+        }
+        button {
+            background-color: $primary!important;
+            color: $white;
+            font-size: 12px;
+            padding: 7px 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+    }
+}

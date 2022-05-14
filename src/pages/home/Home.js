@@ -42,11 +42,13 @@ const Home = ({ get_product_category_wise, clothing, electronics, get_product_el
                                 {
                                     clothing.map(item=>{
                                         return <Card 
+                                            key={item._id}
                                             name={`${item.name.slice(0, 10)}...`}
                                             image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
                                             price={item.price} 
                                             discountedPrice={item.discountedPrice} 
                                             discountPercent={item.discountPercent} 
+                                            id={item._id}
                                         />
                                     })
                                 }
@@ -80,11 +82,13 @@ const Home = ({ get_product_category_wise, clothing, electronics, get_product_el
                                 {
                                     electronics.map(item=>{
                                         return <Card 
+                                            key={item._id}
                                             name={`${item.name.slice(0, 10)}...`}
                                             image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
                                             price={item.price} 
                                             discountedPrice={item.discountedPrice} 
                                             discountPercent={item.discountPercent} 
+                                            id={item._id}
                                         />
                                     })
                                 }
@@ -118,11 +122,13 @@ const Home = ({ get_product_category_wise, clothing, electronics, get_product_el
                                 {
                                     footwear.map(item=>{
                                         return <Card 
+                                            key={item._id}
                                             name={`${item.name.slice(0, 10)}...`}
                                             image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
                                             price={item.price} 
                                             discountedPrice={item.discountedPrice} 
                                             discountPercent={item.discountPercent} 
+                                            id={item._id}
                                         />
                                     })
                                 }

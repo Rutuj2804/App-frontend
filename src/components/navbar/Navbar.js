@@ -14,7 +14,7 @@ const Navbar = ({ logout_user }) => {
     return (
         <div className='container'>
             <div className='navbar__Wrapper'>
-                <Logo />
+                <div onClick={()=>navigate('/home')}><Logo /></div>
                 <div className='navbar__Right'>
                     <IconButton className='icon' onClick={()=>navigate('/product')}>
                         <MdOutlineSearch />

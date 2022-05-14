@@ -1,6 +1,10 @@
 import {
     FETCH_CART_ITEMS_SUCCESS,
-    FETCH_CART_ITEMS_FAIL
+    FETCH_CART_ITEMS_FAIL,
+    ADD_TO_CART_SUCCESS,
+    ADD_TO_CART_FAIL,
+    REMOVE_FROM_CART_SUCCESS,
+    REMOVE_FROM_CART_FAIL
 } from './types'
 
 const initialState = {
@@ -24,6 +28,18 @@ const Cart = (state=initialState, action) => {
                 ...state,
                 error: payload
             }
+        case ADD_TO_CART_SUCCESS: 
+            return {
+                ...state,
+                success: "Successful"
+            }
+        case REMOVE_FROM_CART_SUCCESS:
+            return {
+                ...state,
+                cart: state.cart.filter(val=>val._id!==payload)
+            }
+        case REMOVE_FROM_CART_FAIL:
+        case ADD_TO_CART_FAIL:
         default:
             return state;
     }
