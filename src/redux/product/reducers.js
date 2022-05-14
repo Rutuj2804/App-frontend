@@ -5,6 +5,10 @@ import {
     GET_PRODUCT_ELECTRONICS_SUCCESS,
     GET_PRODUCT_FOOTWEAR_SUCCESS,
     GET_ALL_PRODUCT_SUCCESS,
+    GET_ALL_PRODUCT_FAIL,
+    GET_PRODUCT_CLOTHING_FAIL,
+    GET_PRODUCT_ELECTRONICS_FAIL,
+    GET_PRODUCT_FOOTWEAR_FAIL,
 } from './types'
 
 const initialState = {
@@ -26,11 +30,6 @@ const Product = (state=initialState, action) => {
                 ...state,
                 success: "Successfully Added Product"
             }
-        case ADD_PRODUCT_FAIL:
-            return {
-                ...state,
-                error: payload
-            }
         case GET_PRODUCT_CLOTHING_SUCCESS:
             return {
                 ...state,
@@ -50,6 +49,15 @@ const Product = (state=initialState, action) => {
             return {
                 ...state,
                 products: payload
+            }
+        case ADD_PRODUCT_FAIL:
+        case GET_ALL_PRODUCT_FAIL:
+        case GET_PRODUCT_CLOTHING_FAIL:
+        case GET_PRODUCT_ELECTRONICS_FAIL:
+        case GET_PRODUCT_FOOTWEAR_FAIL:
+            return {
+                ...state,
+                error: payload
             }
         default:
             return state;

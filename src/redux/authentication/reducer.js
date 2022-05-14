@@ -16,7 +16,9 @@ const initialState = {
     userName: '',
     users: [],
     isAdmin: false,
-    isAuthenticated: false
+    isAuthenticated: false,
+    success: "",
+    error: "",
 }
 
 const Authentication = (state=initialState, action) => {
@@ -62,6 +64,10 @@ const Authentication = (state=initialState, action) => {
         case LOGOUT_USER_FAIL:
         case LOGIN_USER_FAIL:
         case FETCH_USER_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
         default:
             return state;
     }

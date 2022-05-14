@@ -4,7 +4,8 @@ import {
 } from './types'
 
 const initialState = {
-    categories: []
+    categories: [],
+    error: ""
 }
 
 const Category = (state=initialState, action) => {
@@ -18,6 +19,10 @@ const Category = (state=initialState, action) => {
                 categories: payload
             }
         case FETCH_CATEGORIES_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
         default:
             return state;
     }

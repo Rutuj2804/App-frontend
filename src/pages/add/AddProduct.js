@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import img1 from '../../assets/form.svg'
 import { fetch_categories, add_product } from '../../redux/actions'
+import Message from '../../components/messages/Message'
 
-const AddProduct = ({ fetch_categories, categories, add_product, success_message, error_message }) => {
+const AddProduct = ({ fetch_categories, categories, add_product, success_message, error_message, error_message_category }) => {
 
     const [ formData, setFormData ] = useState({ 
         name: '',
@@ -140,6 +141,9 @@ const AddProduct = ({ fetch_categories, categories, add_product, success_message
                     </div>
                 </div>
             </div>
+            { success_message ? <Message message={success_message} mood={1} />: null}
+            { error_message ? <Message message={error_message} mood={0} />: null}
+            { error_message_category ? <Message message={error_message_category} mood={0} />: null}
         </div>
     )
 }
@@ -148,6 +152,7 @@ const mapStateToProps = state => ({
     categories: state.Category.categories,
     success_message: state.Product.success,
     error_message: state.Product.error,
+    error_message_category: state.Category.error,
 })
 
 export default connect(mapStateToProps, { fetch_categories, add_product })(AddProduct)

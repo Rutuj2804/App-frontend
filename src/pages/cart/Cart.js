@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import CartItem from '../../components/cart-item/CartItem'
 import { remove_to_cart, get_cart_items } from '../../redux/actions'
 import { GrDeliver } from 'react-icons/gr'
+import Message from '../../components/messages/Message'
 
-const Cart = ({ get_cart_items, cart, remove_to_cart }) => {
+const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_message }) => {
 
     const [placeOrder, setplaceOrder] = useState({
         strike: 0,
@@ -66,12 +67,16 @@ const Cart = ({ get_cart_items, cart, remove_to_cart }) => {
                     </div>
                 </div>
             </div>
+            {success_message ? <Message message={success_message} mood={1} /> : null }
+            {error_message ? <Message message={error_message} mood={0} /> : null }
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    cart: state.Cart.cart
+    cart: state.Cart.cart,
+    success_message: state.Cart.success,
+    error_message: state.Cart.error,
 })
 
 export default connect(mapStateToProps, { get_cart_items, remove_to_cart })(Cart)

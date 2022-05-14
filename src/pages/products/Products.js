@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { get_products, add_to_cart } from '../../redux/actions'
 import CartItem from "../../components/cart-item/CartItem"
+import Message from '../../components/messages/Message'
 
-const Products = ({ get_products, products, add_to_cart }) => {
+const Products = ({ get_products, products, add_to_cart, success_message, error_message }) => {
 
     useEffect(()=>{
         get_products()
@@ -31,12 +32,16 @@ const Products = ({ get_products, products, add_to_cart }) => {
                     }
                 </div>
             </div>
+            {success_message ? <Message message={success_message} mood={1} /> : null }
+            {error_message ? <Message message={error_message} mood={0} /> : null }
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    products: state.Product.products
+    products: state.Product.products,
+    success_message: state.Cart.success,
+    error_message: state.Cart.error,
 })
 
 export default connect(mapStateToProps, { get_products, add_to_cart })(Products)

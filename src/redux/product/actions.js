@@ -42,15 +42,11 @@ export const add_product = (name, description, category, price, discountedPrice,
             payload: res.data
         })
 
-        // dispatch(add_message("Successfully Added Product", 1))
-
     } catch (error) {
         dispatch({
             type: ADD_PRODUCT_FAIL,
             payload: error.message
         })
-
-        // dispatch(add_message(error.message,0))
     }
 
     dispatch(stop_loading())
