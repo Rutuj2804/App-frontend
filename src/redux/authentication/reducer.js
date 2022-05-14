@@ -4,7 +4,9 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAIL,
     FETCH_USER_SUCCESS,
-    FETCH_USER_FAIL
+    FETCH_USER_FAIL,
+    LOGOUT_USER_SUCCESS,
+    LOGOUT_USER_FAIL
 } from './types'
 
 const initialState = {
@@ -24,6 +26,7 @@ const Authentication = (state=initialState, action) => {
                 ...state,
             }
         case LOGIN_USER_SUCCESS: 
+            localStorage.setItem('token', payload.token)
             return {
                 ...state,
                 firstName: payload.user.firstName,
@@ -34,12 +37,21 @@ const Authentication = (state=initialState, action) => {
         case FETCH_USER_SUCCESS:
             return {
                 ...state,
-                firstName: payload.user.firstName,
-                lastName: payload.user.lastName,
-                userName: payload.user.userName,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                userName: payload.userName,
                 isAuthenticated: true
             }
+        case LOGOUT_USER_SUCCESS:
+            return {
+                ...state,
+                firstName: '',
+                lastName: '',
+                userName: '',
+                isAuthenticated: false
+            }
         case REGISTER_USER_FAIL:
+        case LOGOUT_USER_FAIL:
         case LOGIN_USER_FAIL:
         case FETCH_USER_FAIL:
         default:

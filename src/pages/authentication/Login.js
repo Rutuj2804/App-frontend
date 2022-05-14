@@ -1,9 +1,11 @@
 import { Button, Checkbox } from '@mui/material'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Logo from '../../components/logo/Logo'
+import { login_user } from '../../redux/actions'
 
-const Login = () => {
+const Login = ({ login_user }) => {
 
     const [ formData, setFormData ] = useState({
         username: '',
@@ -12,13 +14,15 @@ const Login = () => {
 
     const { username, password } = formData
 
+    const navigate = useNavigate()
+
     const handleChangeInInput = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const handleFormSubmit = e => {
         e.preventDefault()
-        console.log(formData);
+        login_user(username, password, navigate)
     }
 
     return (
@@ -64,4 +68,8 @@ const Login = () => {
     )
 }
 
-export default Login
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { login_user })(Login)

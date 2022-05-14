@@ -1,9 +1,11 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Logo from '../../components/logo/Logo'
+import { register_user } from '../../redux/actions'
 
-const Register = () => {
+const Register = ({ register_user }) => {
 
     const [ formData, setFormData ] = useState({
         username: '',
@@ -11,6 +13,8 @@ const Register = () => {
         lastname: '',
         password: '',
     })
+
+    const navigate = useNavigate()
 
     const { username, firstname, lastname, password } = formData
 
@@ -21,6 +25,7 @@ const Register = () => {
     const handleFormSubmit = e => {
         e.preventDefault()
         console.log(formData);
+        register_user(username, password, firstname, lastname, navigate)
     }
 
     return (
@@ -87,4 +92,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default connect(null, { register_user })(Register)

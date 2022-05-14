@@ -1,0 +1,31 @@
+.addProduct__Wrapper{
+    margin-top: 40px;
+    form {
+        width: 100%;
+        .addProduct__Titles{
+            margin-bottom: 10px;
+        }
+        .addProduct__InputDiv{
+            margin: 10px 0;
+            input, textarea, select {
+                width: 100%;
+                padding: 7px;
+                outline: none;
+                border: 1px solid $dark-gray;
+                border-radius: 5px;
+            }
+            textarea{
+                height: 150px;
+                resize: none;
+            }
+        }
+        button {
+            padding: 7px 15px;
+            border-radius: 20px;
+            background-color: $primary!important;
+            color: $white;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+}

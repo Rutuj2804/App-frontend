@@ -7,10 +7,14 @@
 // pages
 @import "./pages/authentication";
 @import "./pages/home";
+@import "./pages/addProduct";
 
 // components
 @import "./components/logo";
 @import "./components/navbar";
+@import "./components/card";
+@import "./components/loader";
+@import "./components/message";
 
 * {
     margin: 0%;

@@ -1,5 +1,6 @@
 // user routes
 import Home from "../pages/home/Home";
+import AddProduct from "../pages/add/AddProduct";
 
 // auth routes
 import Login from "../pages/authentication/Login";
@@ -10,6 +11,7 @@ import { Navigate } from "react-router-dom";
 
 export const userRoutes = [
     { path: '/home', component: <Home /> },
+    { path: '/add-product', component: <AddProduct /> },
 
     { path: '', component: <Navigate to="/home" /> },
 ]

@@ -1,10 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import { userRoutes, authRoutes } from './routes/AllRoutes'
 import Layout from './hocs/Layout'
 import NonAuthLayout from './hocs/NonAuthLayout'
+import { connect } from 'react-redux'
+import { get_user } from './redux/actions'
 
-const App = () => {
+const App = ({ get_user }) => {
+
+    useEffect(()=>{
+        if(localStorage.getItem('token'))
+            get_user();
+    }, [])
+
     return (
         <div>
             <BrowserRouter>
@@ -33,4 +41,4 @@ const App = () => {
     )
 }
 
-export default App
+export default connect(null, { get_user })(App)

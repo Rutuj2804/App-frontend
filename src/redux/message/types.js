@@ -1,0 +1,2 @@
+export const MESSAGE_SET = 'MESSAGE_SET'
+export const REMOVE_MESSAGE = 'LOADING_STOPPED'

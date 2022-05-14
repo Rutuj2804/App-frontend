@@ -4,14 +4,30 @@
     justify-content: space-between;
     padding: 10px;
     .navbar__Right {
+        .icon {
+            margin: 0px 10;
+        }
         svg{
             font-size: 20px;
             color: $primary;
+        }
+        .button-outline {
+            border: 1px solid $primary;
+            margin-left: 10px;
+            padding: 4px 15px;
+            svg {
+                margin-right: 7px;
+            }
         }
         .button {
             margin-left: 10px;
             background-color: $primary;
             color: $white;
+            padding: 5px 15px;
+            svg {
+                margin-right: 7px;
+                color: $white;
+            }
         }
     }
 }

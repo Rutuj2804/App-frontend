@@ -1,19 +1,35 @@
 import { Button, IconButton } from '@mui/material'
 import React from 'react'
 import Logo from '../logo/Logo'
-import { MdShoppingCart } from 'react-icons/md'
+import { MdShoppingCart, MdOutlineSearch, MdOutlineLogout, MdDashboard } from 'react-icons/md'
+import { HiPlus } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logout_user } from '../../redux/actions'
 
-const Navbar = () => {
+const Navbar = ({ logout_user }) => {
+
+    const navigate = useNavigate()
+
     return (
         <div className='container'>
             <div className='navbar__Wrapper'>
                 <Logo />
                 <div className='navbar__Right'>
-                    <IconButton>
-                        <MdShoppingCart />
+                    <IconButton className='icon'>
+                        <MdOutlineSearch />
                     </IconButton>
-                    <Button className='button'>
-                        Login
+                    <IconButton className='icon' onClick={()=>navigate('/add-product')}>
+                        <HiPlus />
+                    </IconButton>
+                    <IconButton className='icon' onClick={()=>navigate('/dashboard')}>
+                        <MdDashboard />
+                    </IconButton>
+                    <Button className='button-outline'>
+                        <MdShoppingCart /> Cart
+                    </Button>
+                    <Button className='button' onClick={()=>logout_user(navigate)}>
+                        <MdOutlineLogout />Logout
                     </Button>
                 </div>
             </div>
@@ -21,4 +37,8 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { logout_user })(Navbar)
