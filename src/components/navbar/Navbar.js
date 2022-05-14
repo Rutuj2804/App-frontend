@@ -16,7 +16,7 @@ const Navbar = ({ logout_user }) => {
             <div className='navbar__Wrapper'>
                 <Logo />
                 <div className='navbar__Right'>
-                    <IconButton className='icon'>
+                    <IconButton className='icon' onClick={()=>navigate('/product')}>
                         <MdOutlineSearch />
                     </IconButton>
                     <IconButton className='icon' onClick={()=>navigate('/add-product')}>
@@ -25,7 +25,7 @@ const Navbar = ({ logout_user }) => {
                     <IconButton className='icon' onClick={()=>navigate('/dashboard')}>
                         <MdDashboard />
                     </IconButton>
-                    <Button className='button-outline'>
+                    <Button className='button-outline' onClick={()=>navigate('/cart')}>
                         <MdShoppingCart /> Cart
                     </Button>
                     <Button className='button' onClick={()=>logout_user(navigate)}>

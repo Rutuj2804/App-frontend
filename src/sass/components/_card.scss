@@ -32,8 +32,9 @@
         }
     }
     img {
-        width: 100%;
-        height: auto;
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
     }
     button {
         background-color: $primary!important;

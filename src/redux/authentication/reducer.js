@@ -6,13 +6,16 @@ import {
     FETCH_USER_SUCCESS,
     FETCH_USER_FAIL,
     LOGOUT_USER_SUCCESS,
-    LOGOUT_USER_FAIL
+    LOGOUT_USER_FAIL,
+    FETCH_ALL_USER_SUCCESS
 } from './types'
 
 const initialState = {
     firstName: '',
     lastName: '',
     userName: '',
+    users: [],
+    isAdmin: false,
     isAuthenticated: false
 }
 
@@ -49,6 +52,11 @@ const Authentication = (state=initialState, action) => {
                 lastName: '',
                 userName: '',
                 isAuthenticated: false
+            }
+        case FETCH_ALL_USER_SUCCESS:
+            return{
+                ...state,
+                users: payload
             }
         case REGISTER_USER_FAIL:
         case LOGOUT_USER_FAIL:

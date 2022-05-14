@@ -6,4 +6,4 @@ export * from './product/actions'
 
 export * from './loader/actions'
 
-export * from './message/actions'
+export * from './cart/actions'

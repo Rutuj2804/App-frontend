@@ -6,7 +6,9 @@ import {
     FETCH_USER_SUCCESS,
     FETCH_USER_FAIL,
     LOGOUT_USER_SUCCESS,
-    LOGOUT_USER_FAIL
+    LOGOUT_USER_FAIL,
+    FETCH_ALL_USER_SUCCESS,
+    FETCH_ALL_USER_FAIL
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -103,6 +105,38 @@ export const get_user = () => async dispatch => {
         console.log(error);
         dispatch({
             type: FETCH_USER_FAIL,
+            payload: error
+        })
+    }
+
+    dispatch(stop_loading())
+
+}
+
+export const get_all_user = () => async dispatch => {
+
+    dispatch(start_loading())
+
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+            "x-auth-token": `${localStorage.getItem('token')}`,
+        }
+    }
+
+    try {
+        
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/users`, config)
+
+        dispatch({
+            type: FETCH_ALL_USER_SUCCESS,
+            payload: res.data
+        })
+
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: FETCH_ALL_USER_FAIL,
             payload: error
         })
     }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import img1 from '../../assets/pqr.png'
 import img2 from '../../assets/def.jpg'
 import img3 from '../../assets/tuv.jpg'
@@ -6,8 +6,17 @@ import img4 from '../../assets/illustration.svg'
 import { BsMouse } from 'react-icons/bs'
 import Card from '../../components/product-card/Card'
 import { Button } from '@mui/material'
+import { get_product_category_wise, get_product_electronics, get_product_footwear } from '../../redux/actions'
+import { connect } from 'react-redux'
 
-const Home = () => {
+const Home = ({ get_product_category_wise, clothing, electronics, get_product_electronics, get_product_footwear, footwear }) => {
+
+    useEffect(()=>{
+        get_product_category_wise()
+        get_product_electronics()
+        get_product_footwear()
+    }, [])
+
     return (
         <div className='home__Wrapper'>
 
@@ -30,16 +39,17 @@ const Home = () => {
                     <div className='container'>
                         <div className='home__Scrollable'>
                             <div className='home__Cards'>
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
+                                {
+                                    clothing.map(item=>{
+                                        return <Card 
+                                            name={`${item.name.slice(0, 10)}...`}
+                                            image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
+                                            price={item.price} 
+                                            discountedPrice={item.discountedPrice} 
+                                            discountPercent={item.discountPercent} 
+                                        />
+                                    })
+                                }
                             </div>
                             <div className='home__ArrowLeft'></div>
                             <div className='home__ArrowRight'></div>
@@ -67,16 +77,17 @@ const Home = () => {
                     <div className='container'>
                         <div className='home__Scrollable'>
                             <div className='home__Cards'>
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
+                                {
+                                    electronics.map(item=>{
+                                        return <Card 
+                                            name={`${item.name.slice(0, 10)}...`}
+                                            image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
+                                            price={item.price} 
+                                            discountedPrice={item.discountedPrice} 
+                                            discountPercent={item.discountPercent} 
+                                        />
+                                    })
+                                }
                             </div>
                             <div className='home__ArrowLeft'></div>
                             <div className='home__ArrowRight'></div>
@@ -104,16 +115,17 @@ const Home = () => {
                     <div className='container'>
                         <div className='home__Scrollable'>
                             <div className='home__Cards'>
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
-                                <Card />
+                                {
+                                    footwear.map(item=>{
+                                        return <Card 
+                                            name={`${item.name.slice(0, 10)}...`}
+                                            image={`${process.env.REACT_APP_API_URL}/${item.image}`} 
+                                            price={item.price} 
+                                            discountedPrice={item.discountedPrice} 
+                                            discountPercent={item.discountPercent} 
+                                        />
+                                    })
+                                }
                             </div>
                             <div className='home__ArrowLeft'></div>
                             <div className='home__ArrowRight'></div>
@@ -157,4 +169,10 @@ const Home = () => {
     )
 }
 
-export default Home
+const mapStateToProps = state => ({
+    clothing: state.Product.clothing,
+    electronics: state.Product.electronics,
+    footwear: state.Product.footwear,
+})
+
+export default connect(mapStateToProps, { get_product_category_wise, get_product_electronics, get_product_footwear })(Home)
