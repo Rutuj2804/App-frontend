@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import Message from '../../components/messages/Message'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import Aos from "aos"
+import { useNavigate } from 'react-router-dom'
 
 const Home = ({ get_product_category_wise, clothing, electronics, success_message, error_message, get_product_electronics, get_product_footwear, footwear }) => {
 
@@ -19,6 +20,8 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
         get_product_electronics()
         get_product_footwear()
     }, [])
+
+    const navigate = useNavigate()
 
     useEffect(()=>{
         Aos.init({ duration: 1000 })
@@ -38,7 +41,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                             <div className='col-lg-5 col-md-6 col-12 home__Left' data-aos="fade-up">
                                 <h1>Every Purchase Will <br/>Be Made With Pleasure</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-                                <button><BsMouse />Get Started</button>
+                                <button onClick={()=>navigate('/product')}><BsMouse />Get Started</button>
                             </div>
                             <div className='col-lg-7 col-md-6 col-12 home__Right' data-aos="fade-down">
                                 <img src={img1} alt='background' className='img-fluid' />
@@ -81,7 +84,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                             <div className='col-lg-5 col-md-6 col-12 home__Left'  data-aos="fade-up">
                                 <h1>Stay Updated <br/>With Latest Fashion</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-                                <button><BsMouse />Get Started</button>
+                                <button onClick={()=>navigate('/product')}><BsMouse />Get Started</button>
                             </div>
                         </div>
                     </div>
@@ -118,7 +121,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                             <div className='col-lg-5 col-md-6 col-12 home__Left'  data-aos="fade-up">
                                 <h1>Stay Updated <br/>With Latest Fashion</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-                                <button><BsMouse />Check Out</button>
+                                <button onClick={()=>navigate('/product')}><BsMouse />Check Out</button>
                             </div>
                             <div className='col-lg-7 col-md-6 col-12 home__Right'  data-aos="fade-down">
                                 <img src={img3} alt='background' className='img-fluid' />
@@ -154,10 +157,10 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
             <section className='home__ContactUs'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-right">
+                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-up">
                             <img src={img4} alt="contact" className='img-fluid' />
                         </div>
-                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-left">
+                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-down">
                             <form>
                                 <div className='home__Titles'>
                                     <h4>Contact Us</h4>

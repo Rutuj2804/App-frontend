@@ -98,7 +98,7 @@ const AddProduct = ({ fetch_categories, categories, add_product, success_message
                                     name="price"
                                     value={price}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Price Of The Product"
+                                    placeholder="Enter Original Price Of The Product"
                                     required
                                     autoComplete='off'
                                 />
@@ -109,7 +109,7 @@ const AddProduct = ({ fetch_categories, categories, add_product, success_message
                                     name="discountedPrice"
                                     value={discountedPrice}
                                     onChange={handleInputChange}
-                                    placeholder="Enter discountedPrice Of The Product"
+                                    placeholder="Enter Discounted Price Of The Product"
                                     required
                                     autoComplete='off'
                                 />
@@ -120,7 +120,7 @@ const AddProduct = ({ fetch_categories, categories, add_product, success_message
                                     name="discountPercent"
                                     value={discountPercent}
                                     onChange={handleInputChange}
-                                    placeholder="Enter discountPercent Of The Product"
+                                    placeholder="Enter Percentage Of Discount On The Product"
                                     required
                                     autoComplete='off'
                                 />

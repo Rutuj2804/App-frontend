@@ -63,7 +63,7 @@ const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_mes
                             ></textarea>
                             <p><strike>${placeOrder.strike}</strike> - <span>${placeOrder.price}</span></p>
                             <div className='freedelivery'><GrDeliver />Free Delivery - <span>{placeOrder.items} items</span></div>
-                            <Button type="submit">Place Order</Button>
+                            <Button disabled={address ? false : true} type="submit">Place Order</Button>
                         </form>
                     </div>
                     <div className='col-lg-9 col-md-8 col-12'>

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout_user } from '../../redux/actions'
 
-const Navbar = ({ logout_user }) => {
+const Navbar = ({ logout_user, isAdmin }) => {
 
     const navigate = useNavigate()
 
@@ -22,9 +22,9 @@ const Navbar = ({ logout_user }) => {
                     <IconButton className='icon' onClick={()=>navigate('/add-product')}>
                         <HiPlus />
                     </IconButton>
-                    <IconButton className='icon' onClick={()=>navigate('/dashboard')}>
+                    {isAdmin ?<IconButton className='icon' onClick={()=>navigate('/dashboard')}>
                         <MdDashboard />
-                    </IconButton>
+                    </IconButton>: null}
                     <Button className='button-outline' onClick={()=>navigate('/cart')}>
                         <MdShoppingCart /> Cart
                     </Button>
@@ -38,7 +38,7 @@ const Navbar = ({ logout_user }) => {
 }
 
 const mapStateToProps = state => ({
-
+    isAdmin: state.Authentication.isAdmin
 })
 
 export default connect(mapStateToProps, { logout_user })(Navbar)

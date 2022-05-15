@@ -39,6 +39,7 @@ const Authentication = (state=initialState, action) => {
                 firstName: payload.user.firstName,
                 lastName: payload.user.lastName,
                 userName: payload.user.userName,
+                isAdmin: payload.user.isAdmin,
                 isAuthenticated: true
             }
         case FETCH_USER_SUCCESS:
@@ -47,6 +48,7 @@ const Authentication = (state=initialState, action) => {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 userName: payload.userName,
+                isAdmin: payload.isAdmin,
                 isAuthenticated: true
             }
         case LOGOUT_USER_SUCCESS:
@@ -55,6 +57,7 @@ const Authentication = (state=initialState, action) => {
                 firstName: '',
                 lastName: '',
                 userName: '',
+                isAdmin: false,
                 isAuthenticated: false
             }
         case FETCH_ALL_USER_SUCCESS:
