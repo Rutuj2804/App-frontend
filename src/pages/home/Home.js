@@ -19,12 +19,14 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
         get_product_category_wise()
         get_product_electronics()
         get_product_footwear()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const navigate = useNavigate()
 
     useEffect(()=>{
         Aos.init({ duration: 1000 })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const mensClothing = useRef(null)

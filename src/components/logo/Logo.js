@@ -1,5 +1,4 @@
 import React from 'react'
-import { IoLogoXing } from 'react-icons/io'
 
 const Logo = () => {
     return (

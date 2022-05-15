@@ -91,7 +91,7 @@ export const remove_to_cart = (id, cartId) => async dispatch => {
 
     try {
         
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/cart/remove/${id}`, {},config)
+         await axios.post(`${process.env.REACT_APP_API_URL}/cart/remove/${id}`, {},config)
 
         dispatch({
             type: REMOVE_FROM_CART_SUCCESS,

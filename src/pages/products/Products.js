@@ -9,10 +9,12 @@ const Products = ({ get_products, products, add_to_cart, success_message, error_
 
     useEffect(()=>{
         get_products()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=>{
         Aos.init({ duration: 1000 })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

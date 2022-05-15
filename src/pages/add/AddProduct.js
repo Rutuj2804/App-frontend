@@ -22,11 +22,13 @@ const AddProduct = ({ fetch_categories, categories, add_product, success_message
 
     useEffect(()=>{
         fetch_categories();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=>{
         if(categories)
             setFormData({ ...formData, category: categories[0]?._id })
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categories.length])
 
     const { name, description, category, price, discountedPrice, discountPercent, image } = formData;

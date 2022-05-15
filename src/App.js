@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { userRoutes, authRoutes } from './routes/AllRoutes'
 import Layout from './hocs/Layout'
 import NonAuthLayout from './hocs/NonAuthLayout'
@@ -12,6 +12,7 @@ const App = ({ get_user }) => {
     useEffect(()=>{
         if(localStorage.getItem('token'))
             get_user();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

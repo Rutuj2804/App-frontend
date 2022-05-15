@@ -15,6 +15,7 @@ const ProductDetailPage = ({ get_product_by_id, product, add_to_cart, error, suc
 
     useEffect(()=>{
         get_product_by_id(id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     const addToCart = id => {

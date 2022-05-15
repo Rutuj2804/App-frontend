@@ -19,10 +19,12 @@ const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_mes
 
     useEffect(()=>{
         get_cart_items()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=>{
         Aos.init({ duration: 1000 })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=>{
@@ -35,6 +37,7 @@ const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_mes
             }
             setplaceOrder({ strike, price, items: cart.length })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])
 
     const placeOrderOnSubmit = e => {

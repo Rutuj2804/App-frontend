@@ -8,6 +8,7 @@ const Dashboard = ({ get_all_user, users, error_message }) => {
 
     useEffect(()=>{
         get_all_user()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

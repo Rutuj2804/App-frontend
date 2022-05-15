@@ -77,7 +77,6 @@ const Product = (state=initialState, action) => {
             }
         case GET_ALL_PRODUCT_FAIL:
         case ADD_PRODUCT_FAIL:
-        case GET_ALL_PRODUCT_FAIL:
         case GET_PRODUCT_CLOTHING_FAIL:
         case GET_PRODUCT_ELECTRONICS_FAIL:
         case GET_PRODUCT_FOOTWEAR_FAIL:
