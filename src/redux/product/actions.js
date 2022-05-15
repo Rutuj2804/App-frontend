@@ -9,7 +9,9 @@ import {
     GET_PRODUCT_FOOTWEAR_FAIL,
     GET_ALL_PRODUCT_SUCCESS,
     GET_ALL_PRODUCT_FAIL,
-    REMOVE_MESSAGES_FROM_PRODUCT
+    REMOVE_MESSAGES_FROM_PRODUCT,
+    GET_PRODUCT_BY_ID_SUCCESS,
+    GET_PRODUCT_BY_ID_FAIL
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -178,6 +180,39 @@ export const get_products = () => async dispatch => {
     } catch (error) {
         dispatch({
             type: GET_ALL_PRODUCT_FAIL,
+            payload: error.message
+        })
+    }
+
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
+    dispatch(stop_loading())
+
+}
+
+export const get_product_by_id = (id) => async dispatch => {
+
+    dispatch(start_loading())
+
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+            "x-auth-token": `${localStorage.getItem('token')}`
+        }
+    }
+
+    try {
+        
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/get/${id}`, config)
+
+        dispatch({
+            type: GET_PRODUCT_BY_ID_SUCCESS,
+            payload: res.data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: GET_PRODUCT_BY_ID_FAIL,
             payload: error.message
         })
     }

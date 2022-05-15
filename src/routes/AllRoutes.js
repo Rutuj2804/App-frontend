@@ -4,6 +4,7 @@ import Products from "../pages/products/Products";
 import AddProduct from "../pages/add/AddProduct";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Cart from "../pages/cart/Cart";
+import ProductDetailPage from "../pages/detail page/ProductDetailPage";
 
 // auth routes
 import Login from "../pages/authentication/Login";
@@ -18,6 +19,7 @@ export const userRoutes = [
     { path: '/product', component: <Products /> },
     { path: '/dashboard', component: <Dashboard /> },
     { path: '/cart', component: <Cart /> },
+    { path: '/product/:id', component: <ProductDetailPage /> },
 
     { path: '', component: <Navigate to="/home" /> },
 ]

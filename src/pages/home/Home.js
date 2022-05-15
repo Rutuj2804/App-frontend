@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import img1 from '../../assets/pqr.png'
 import img2 from '../../assets/def.jpg'
 import img3 from '../../assets/tuv.jpg'
@@ -9,6 +9,8 @@ import { Button } from '@mui/material'
 import { get_product_category_wise, get_product_electronics, get_product_footwear } from '../../redux/actions'
 import { connect } from 'react-redux'
 import Message from '../../components/messages/Message'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import Aos from "aos"
 
 const Home = ({ get_product_category_wise, clothing, electronics, success_message, error_message, get_product_electronics, get_product_footwear, footwear }) => {
 
@@ -18,6 +20,14 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
         get_product_footwear()
     }, [])
 
+    useEffect(()=>{
+        Aos.init({ duration: 1000 })
+    }, [])
+
+    const mensClothing = useRef(null)
+    const electronicsRef = useRef(null)
+    const footwearRef = useRef(null)
+
     return (
         <div className='home__Wrapper'>
 
@@ -25,12 +35,12 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__TopBanner'>
                     <div className='container'>
                         <div className='row'>
-                            <div className='col-lg-5 col-md-6 col-12 home__Left'>
+                            <div className='col-lg-5 col-md-6 col-12 home__Left' data-aos="fade-up">
                                 <h1>Every Purchase Will <br/>Be Made With Pleasure</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
                                 <button><BsMouse />Get Started</button>
                             </div>
-                            <div className='col-lg-7 col-md-6 col-12 home__Right'>
+                            <div className='col-lg-7 col-md-6 col-12 home__Right' data-aos="fade-down">
                                 <img src={img1} alt='background' className='img-fluid' />
                             </div>
                         </div>
@@ -39,7 +49,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__BottomScroll'>
                     <div className='container'>
                         <div className='home__Scrollable'>
-                            <div className='home__Cards'>
+                            <div className='home__Cards' ref={mensClothing}>
                                 {
                                     clothing.map(item=>{
                                         return <Card 
@@ -54,8 +64,8 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                                     })
                                 }
                             </div>
-                            <div className='home__ArrowLeft'></div>
-                            <div className='home__ArrowRight'></div>
+                            <div className='home__ArrowLeft' onClick={()=>mensClothing.current.scrollBy({ left: -200, right: 0, behaviour: "smooth" })} ><AiOutlineLeft /></div>
+                            <div className='home__ArrowRight' onClick={()=>mensClothing.current.scrollBy({ left: 200, right: 0, behaviour: "smooth" })} ><AiOutlineRight /></div>
                         </div>
                     </div>
                 </div>
@@ -65,11 +75,11 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__TopBanner'>
                     <div className='container'>
                         <div className='row'>
-                            <div className='col-lg-7 col-md-6 col-12 home__Right'>
+                            <div className='col-lg-7 col-md-6 col-12 home__Right' data-aos="fade-down">
                                 <img src={img2} alt='background' className='img-fluid' />
                             </div>
-                            <div className='col-lg-5 col-md-6 col-12 home__Left'>
-                                <h1>Every Purchase Will <br/>Be Made With Pleasure</h1>
+                            <div className='col-lg-5 col-md-6 col-12 home__Left'  data-aos="fade-up">
+                                <h1>Stay Updated <br/>With Latest Fashion</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
                                 <button><BsMouse />Get Started</button>
                             </div>
@@ -79,7 +89,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__BottomScroll'>
                     <div className='container'>
                         <div className='home__Scrollable'>
-                            <div className='home__Cards'>
+                            <div className='home__Cards' ref={electronicsRef}>
                                 {
                                     electronics.map(item=>{
                                         return <Card 
@@ -94,8 +104,8 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                                     })
                                 }
                             </div>
-                            <div className='home__ArrowLeft'></div>
-                            <div className='home__ArrowRight'></div>
+                            <div className='home__ArrowLeft' onClick={()=>electronicsRef.current.scrollBy({ left: -200, right: 0, behaviour: "smooth" })} ><AiOutlineLeft /></div>
+                            <div className='home__ArrowRight' onClick={()=>electronicsRef.current.scrollBy({ left: 200, right: 0, behaviour: "smooth" })} ><AiOutlineRight /></div>
                         </div>
                     </div>
                 </div>
@@ -105,12 +115,12 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__TopBanner'>
                     <div className='container'>
                         <div className='row'>
-                            <div className='col-lg-5 col-md-6 col-12 home__Left'>
-                                <h1>Every Purchase Will <br/>Be Made With Pleasure</h1>
+                            <div className='col-lg-5 col-md-6 col-12 home__Left'  data-aos="fade-up">
+                                <h1>Stay Updated <br/>With Latest Fashion</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-                                <button><BsMouse />Get Started</button>
+                                <button><BsMouse />Check Out</button>
                             </div>
-                            <div className='col-lg-7 col-md-6 col-12 home__Right'>
+                            <div className='col-lg-7 col-md-6 col-12 home__Right'  data-aos="fade-down">
                                 <img src={img3} alt='background' className='img-fluid' />
                             </div>
                         </div>
@@ -119,7 +129,7 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                 <div className='home__BottomScroll'>
                     <div className='container'>
                         <div className='home__Scrollable'>
-                            <div className='home__Cards'>
+                            <div className='home__Cards' ref={footwearRef}>
                                 {
                                     footwear.map(item=>{
                                         return <Card 
@@ -134,8 +144,8 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
                                     })
                                 }
                             </div>
-                            <div className='home__ArrowLeft'></div>
-                            <div className='home__ArrowRight'></div>
+                            <div className='home__ArrowLeft' onClick={()=>footwearRef.current.scrollBy({ left: -200, right: 0, behaviour: "smooth" })} ><AiOutlineLeft /></div>
+                            <div className='home__ArrowRight' onClick={()=>footwearRef.current.scrollBy({ left: 200, right: 0, behaviour: "smooth" })} ><AiOutlineRight /></div>
                         </div>
                     </div>
                 </div>
@@ -144,10 +154,10 @@ const Home = ({ get_product_category_wise, clothing, electronics, success_messag
             <section className='home__ContactUs'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-lg-6 col-md-6 col-12'>
+                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-right">
                             <img src={img4} alt="contact" className='img-fluid' />
                         </div>
-                        <div className='col-lg-6 col-md-6 col-12'>
+                        <div className='col-lg-6 col-md-6 col-12' data-aos="fade-left">
                             <form>
                                 <div className='home__Titles'>
                                     <h4>Contact Us</h4>

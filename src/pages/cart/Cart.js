@@ -5,6 +5,7 @@ import CartItem from '../../components/cart-item/CartItem'
 import { remove_to_cart, get_cart_items, place_order } from '../../redux/actions'
 import { GrDeliver } from 'react-icons/gr'
 import Message from '../../components/messages/Message'
+import Aos from "aos"
 
 const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_message, success_place_order_message, error_place_order_message, place_order }) => {
 
@@ -18,6 +19,10 @@ const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_mes
 
     useEffect(()=>{
         get_cart_items()
+    }, [])
+
+    useEffect(()=>{
+        Aos.init({ duration: 1000 })
     }, [])
 
     useEffect(()=>{
@@ -65,9 +70,11 @@ const Cart = ({ get_cart_items, cart, remove_to_cart, success_message, error_mes
                         <div className='row'>
                             {
                                 cart.map(item=>{
-                                    return <div className='col-lg-4 col-md-6 col-12' key={item.product._id}>
+                                    return <div className='col-lg-4 col-md-6 col-12' data-aos="fade-up" key={item.product._id}>
                                         <CartItem
-                                            name={item.product.name}
+                                            key={item._id}
+                                            id={item.product._id}
+                                            name={`${item.product.name.slice(0,15)}...`}
                                             image={`${process.env.REACT_APP_API_URL}/${item.product.image}`} 
                                             price={item.product.price} 
                                             discountedPrice={item.product.discountedPrice} 

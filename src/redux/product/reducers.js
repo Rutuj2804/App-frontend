@@ -9,7 +9,9 @@ import {
     GET_PRODUCT_CLOTHING_FAIL,
     GET_PRODUCT_ELECTRONICS_FAIL,
     GET_PRODUCT_FOOTWEAR_FAIL,
-    REMOVE_MESSAGES_FROM_PRODUCT
+    REMOVE_MESSAGES_FROM_PRODUCT,
+    GET_PRODUCT_BY_ID_SUCCESS,
+    GET_PRODUCT_BY_ID_FAIL
 } from './types'
 
 const initialState = {
@@ -17,6 +19,17 @@ const initialState = {
     electronics: [],
     footwear: [],
     products: [],
+    product: {
+        name: "",
+        description: "",
+        image: "",
+        price: "",
+        discountedPrice: "",
+        discountPercent: "",
+        category: {
+            name: ""
+        }
+    },
     success: "",
     error: ""
 }
@@ -51,17 +64,24 @@ const Product = (state=initialState, action) => {
                 ...state,
                 products: payload
             }
+        case GET_PRODUCT_BY_ID_SUCCESS:
+            return {
+                ...state,
+                product: payload
+            }
         case REMOVE_MESSAGES_FROM_PRODUCT:
             return {
                 ...state,
                 success: "",
                 error: ""
             }
+        case GET_ALL_PRODUCT_FAIL:
         case ADD_PRODUCT_FAIL:
         case GET_ALL_PRODUCT_FAIL:
         case GET_PRODUCT_CLOTHING_FAIL:
         case GET_PRODUCT_ELECTRONICS_FAIL:
         case GET_PRODUCT_FOOTWEAR_FAIL:
+        case GET_PRODUCT_BY_ID_FAIL:
             return {
                 ...state,
                 error: payload

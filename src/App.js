@@ -5,6 +5,7 @@ import Layout from './hocs/Layout'
 import NonAuthLayout from './hocs/NonAuthLayout'
 import { connect } from 'react-redux'
 import { get_user } from './redux/actions'
+import "aos/dist/aos.css"
 
 const App = ({ get_user }) => {
 

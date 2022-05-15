@@ -4,7 +4,7 @@ import { IoLogoXing } from 'react-icons/io'
 const Logo = () => {
     return (
         <div className='logo'>
-            <IoLogoXing />
+            {/* <IoLogoXing /> */}
             <h4>Perma<span>Tech</span></h4>
         </div>
     )
