@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import Logo from '../../components/logo/Logo'
 import { register_user } from '../../redux/actions'
 
-const Register = ({ register_user }) => {
+const Register = ({ register_user, error, success }) => {
 
     const [ formData, setFormData ] = useState({
         username: '',
@@ -24,7 +24,6 @@ const Register = ({ register_user }) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
-        console.log(formData);
         register_user(username, password, firstname, lastname, navigate)
     }
 
@@ -35,6 +34,12 @@ const Register = ({ register_user }) => {
                     <Logo />
                 </div>
                 <form onSubmit={handleFormSubmit}>
+                    {error ?<div className='auth__Errors'>
+                        <p>{error}</p>
+                    </div>: null}
+                    {success ?<div className='auth__Success'>
+                        <p>{success}</p>
+                    </div>: null}
                     <div className='auth__InputDiv'>
                         <input
                             type="text"
@@ -92,4 +97,9 @@ const Register = ({ register_user }) => {
     )
 }
 
-export default connect(null, { register_user })(Register)
+const mapStateToProps = state => ({
+    error: state.Authentication.error,
+    success: state.Authentication.success,
+})
+
+export default connect(mapStateToProps, { register_user })(Register)

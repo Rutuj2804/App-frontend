@@ -1,6 +1,7 @@
 import {
     FETCH_CATEGORIES_SUCCESS,
-    FETCH_CATEGORIES_FAIL
+    FETCH_CATEGORIES_FAIL,
+    REMOVE_MESSAGES_FROM_CATEGORY
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -28,10 +29,18 @@ export const fetch_categories = () => async dispatch => {
     } catch (error) {
         dispatch({
             type: FETCH_CATEGORIES_FAIL,
-            payload: error
+            payload: error.message
         })
     }
 
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
     dispatch(stop_loading())
 
+}
+
+const remove_messages = () => async dispatch => {
+    dispatch({
+        type: REMOVE_MESSAGES_FROM_CATEGORY
+    })
 }

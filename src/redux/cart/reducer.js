@@ -4,7 +4,8 @@ import {
     ADD_TO_CART_SUCCESS,
     ADD_TO_CART_FAIL,
     REMOVE_FROM_CART_SUCCESS,
-    REMOVE_FROM_CART_FAIL
+    REMOVE_FROM_CART_FAIL,
+    REMOVE_MESSAGES
 } from './types'
 
 const initialState = {
@@ -33,6 +34,12 @@ const Cart = (state=initialState, action) => {
                 ...state,
                 cart: state.cart.filter(val=>val._id!==payload),
                 success: "Product Successfully Removed From Cart"
+            }
+        case REMOVE_MESSAGES: 
+            return {
+                ...state,
+                success: "",
+                error: ""
             }
         case REMOVE_FROM_CART_FAIL:
         case ADD_TO_CART_FAIL:

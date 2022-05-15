@@ -8,8 +8,9 @@ import Card from '../../components/product-card/Card'
 import { Button } from '@mui/material'
 import { get_product_category_wise, get_product_electronics, get_product_footwear } from '../../redux/actions'
 import { connect } from 'react-redux'
+import Message from '../../components/messages/Message'
 
-const Home = ({ get_product_category_wise, clothing, electronics, get_product_electronics, get_product_footwear, footwear }) => {
+const Home = ({ get_product_category_wise, clothing, electronics, success_message, error_message, get_product_electronics, get_product_footwear, footwear }) => {
 
     useEffect(()=>{
         get_product_category_wise()
@@ -171,6 +172,8 @@ const Home = ({ get_product_category_wise, clothing, electronics, get_product_el
                     </div>
                 </div>
             </section>
+            {success_message ? <Message message={success_message} mood={1} /> : null }
+            {error_message ? <Message message={error_message} mood={0} /> : null }
       </div>
     )
 }
@@ -179,6 +182,8 @@ const mapStateToProps = state => ({
     clothing: state.Product.clothing,
     electronics: state.Product.electronics,
     footwear: state.Product.footwear,
+    success_message: state.Cart.success,
+    error_message: state.Cart.error,
 })
 
 export default connect(mapStateToProps, { get_product_category_wise, get_product_electronics, get_product_footwear })(Home)

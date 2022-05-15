@@ -8,7 +8,8 @@ import {
     GET_PRODUCT_FOOTWEAR_SUCCESS,
     GET_PRODUCT_FOOTWEAR_FAIL,
     GET_ALL_PRODUCT_SUCCESS,
-    GET_ALL_PRODUCT_FAIL
+    GET_ALL_PRODUCT_FAIL,
+    REMOVE_MESSAGES_FROM_PRODUCT
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -49,6 +50,8 @@ export const add_product = (name, description, category, price, discountedPrice,
         })
     }
 
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
     dispatch(stop_loading())
 
 }
@@ -79,6 +82,8 @@ export const get_product_category_wise = () => async dispatch => {
             payload: error.message
         })
     }
+
+    setTimeout(()=>dispatch(remove_messages()), 5000)
 
     dispatch(stop_loading())
 
@@ -111,6 +116,8 @@ export const get_product_electronics = () => async dispatch => {
         })
     }
 
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
     dispatch(stop_loading())
 
 }
@@ -141,6 +148,8 @@ export const get_product_footwear = () => async dispatch => {
             payload: error.message
         })
     }
+
+    setTimeout(()=>dispatch(remove_messages()), 5000)
 
     dispatch(stop_loading())
 
@@ -173,6 +182,14 @@ export const get_products = () => async dispatch => {
         })
     }
 
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
     dispatch(stop_loading())
 
+}
+
+const remove_messages = () => async dispatch => {
+    dispatch({
+        type: REMOVE_MESSAGES_FROM_PRODUCT
+    })
 }

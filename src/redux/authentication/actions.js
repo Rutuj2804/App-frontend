@@ -8,7 +8,8 @@ import {
     LOGOUT_USER_SUCCESS,
     LOGOUT_USER_FAIL,
     FETCH_ALL_USER_SUCCESS,
-    FETCH_ALL_USER_FAIL
+    FETCH_ALL_USER_FAIL,
+    REMOVE_AUTH_ERRORS
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -28,7 +29,7 @@ export const register_user = (userName, password, firstName, lastName, navigate)
     try {
         
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/register`, body, config)
-
+console.log(res.data);
         dispatch({
             type: REGISTER_USER_SUCCESS,
             payload: res.data
@@ -39,9 +40,11 @@ export const register_user = (userName, password, firstName, lastName, navigate)
     } catch (error) {
         dispatch({
             type: REGISTER_USER_FAIL,
-            payload: error
+            payload: error.response.data.error ? error.response.data.error : error.message
         })
     }
+
+    setTimeout(()=>dispatch(remove_errors()), 5000)
 
     dispatch(stop_loading())
 
@@ -62,7 +65,7 @@ export const login_user = (userName, password, navigate) => async dispatch => {
     try {
         
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, body, config)
-
+        console.log(res.data);
         dispatch({
             type: LOGIN_USER_SUCCESS,
             payload: res.data
@@ -73,9 +76,11 @@ export const login_user = (userName, password, navigate) => async dispatch => {
     } catch (error) {
         dispatch({
             type: LOGIN_USER_FAIL,
-            payload: error
+            payload: error.response.data.error ? error.response.data.error : error.message 
         })
     }
+
+    setTimeout(()=>dispatch(remove_errors()), 5000)
 
     dispatch(stop_loading())
 
@@ -105,9 +110,11 @@ export const get_user = () => async dispatch => {
         console.log(error);
         dispatch({
             type: FETCH_USER_FAIL,
-            payload: error
+            payload: error.message
         })
     }
+
+    setTimeout(()=>dispatch(remove_errors()), 5000)
 
     dispatch(stop_loading())
 
@@ -137,9 +144,11 @@ export const get_all_user = () => async dispatch => {
         console.log(error);
         dispatch({
             type: FETCH_ALL_USER_FAIL,
-            payload: error
+            payload: error.message
         })
     }
+
+    setTimeout(()=>dispatch(remove_errors()), 5000)
 
     dispatch(stop_loading())
 
@@ -168,4 +177,10 @@ export const logout_user = (navigate) => async dispatch => {
 
     dispatch(stop_loading())
 
+}
+
+const remove_errors = () => async dispatch => {
+    dispatch({
+        type: REMOVE_AUTH_ERRORS
+    })
 }

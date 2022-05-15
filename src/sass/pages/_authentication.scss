@@ -23,6 +23,12 @@
         form{
             width: 100%;
             text-align: center;
+            .auth__Errors {
+                color: $red;
+            }
+            .auth__Success {
+                color: $green;
+            }
             .auth__InputDiv{
                 position: relative;
                 margin: 15px 0;

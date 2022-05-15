@@ -9,6 +9,7 @@ import {
     GET_PRODUCT_CLOTHING_FAIL,
     GET_PRODUCT_ELECTRONICS_FAIL,
     GET_PRODUCT_FOOTWEAR_FAIL,
+    REMOVE_MESSAGES_FROM_PRODUCT
 } from './types'
 
 const initialState = {
@@ -49,6 +50,12 @@ const Product = (state=initialState, action) => {
             return {
                 ...state,
                 products: payload
+            }
+        case REMOVE_MESSAGES_FROM_PRODUCT:
+            return {
+                ...state,
+                success: "",
+                error: ""
             }
         case ADD_PRODUCT_FAIL:
         case GET_ALL_PRODUCT_FAIL:

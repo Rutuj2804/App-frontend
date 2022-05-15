@@ -7,7 +7,8 @@ import {
     FETCH_USER_FAIL,
     LOGOUT_USER_SUCCESS,
     LOGOUT_USER_FAIL,
-    FETCH_ALL_USER_SUCCESS
+    FETCH_ALL_USER_SUCCESS,
+    REMOVE_AUTH_ERRORS
 } from './types'
 
 const initialState = {
@@ -29,6 +30,7 @@ const Authentication = (state=initialState, action) => {
         case REGISTER_USER_SUCCESS: 
             return {
                 ...state,
+                success: "User Registered Successfully"
             }
         case LOGIN_USER_SUCCESS: 
             localStorage.setItem('token', payload.token)
@@ -59,6 +61,12 @@ const Authentication = (state=initialState, action) => {
             return{
                 ...state,
                 users: payload
+            }
+        case REMOVE_AUTH_ERRORS:
+            return {
+                ...state,
+                success: "",
+                error: "",
             }
         case REGISTER_USER_FAIL:
         case LOGOUT_USER_FAIL:

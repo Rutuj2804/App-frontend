@@ -4,7 +4,8 @@ import {
     ADD_TO_CART_SUCCESS,
     ADD_TO_CART_FAIL,
     REMOVE_FROM_CART_SUCCESS,
-    REMOVE_FROM_CART_FAIL
+    REMOVE_FROM_CART_FAIL,
+    REMOVE_MESSAGES
 } from './types'
 import axios from 'axios'
 import { start_loading, stop_loading } from '../actions'
@@ -34,6 +35,8 @@ export const get_cart_items = () => async dispatch => {
             type: FETCH_CART_ITEMS_FAIL,
             payload: error.message
         })
+
+        setTimeout(()=>dispatch(remove_messages()), 5000)
     }
 
     dispatch(stop_loading())
@@ -60,11 +63,15 @@ export const add_to_cart = (id) => async dispatch => {
             payload: res.data
         })
 
+        setTimeout(()=>dispatch(remove_messages()), 5000)
+
     } catch (error) {
         dispatch({
             type: ADD_TO_CART_FAIL,
             payload: error.message
         })
+
+        setTimeout(()=>dispatch(remove_messages()), 5000)
     }
 
     dispatch(stop_loading())
@@ -98,6 +105,14 @@ export const remove_to_cart = (id, cartId) => async dispatch => {
         })
     }
 
+    setTimeout(()=>dispatch(remove_messages()), 5000)
+
     dispatch(stop_loading())
 
+}
+
+const remove_messages = () => async dispatch => {
+    dispatch({
+        type: REMOVE_MESSAGES
+    })
 }

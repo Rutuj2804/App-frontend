@@ -1,32 +1,34 @@
 import {
-    FETCH_CATEGORIES_SUCCESS,
-    FETCH_CATEGORIES_FAIL,
-    REMOVE_MESSAGES_FROM_CATEGORY
+    PLACE_ORDER_SUCCESS,
+    PLACE_ORDER_FAIL,
+    REMOVE_MESSAGES_FROM_ORDER
 } from './types'
 
 const initialState = {
-    categories: [],
+    cart: [],
+    success: "",
     error: ""
 }
 
-const Category = (state=initialState, action) => {
+const Order = (state=initialState, action) => {
 
     const { type, payload } = action
 
     switch(type){
-        case FETCH_CATEGORIES_SUCCESS: 
+        case PLACE_ORDER_SUCCESS:
             return {
                 ...state,
-                categories: payload
+                success: "Order Successfully Placed"
             }
-        case FETCH_CATEGORIES_FAIL:
+        case PLACE_ORDER_FAIL:
             return {
                 ...state,
                 error: payload
             }
-        case REMOVE_MESSAGES_FROM_CATEGORY: 
-            return{
+        case REMOVE_MESSAGES_FROM_ORDER:
+            return {
                 ...state,
+                success: "",
                 error: ""
             }
         default:
@@ -35,4 +37,4 @@ const Category = (state=initialState, action) => {
 
 }
 
-export default Category
+export default Order
